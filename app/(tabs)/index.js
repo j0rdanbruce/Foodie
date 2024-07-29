@@ -22,6 +22,7 @@ export default function HomeScreen() {
     if (item) {
       if (ingredients.includes(item)) {
         Alert.alert(`${item} already added.`)
+        
       } else {
         setIngredients(
           [...ingredients,
