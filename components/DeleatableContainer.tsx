@@ -1,10 +1,12 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 
 import { Button } from "react-native-elements";
 
 import { ThemedView } from "./ThemedView";
 import { ThemedText } from "./ThemedText";
+
+import Feather from '@expo/vector-icons/Feather';
 
 
 export default function DeletableContainer(props: Ingredient) {
@@ -12,11 +14,10 @@ export default function DeletableContainer(props: Ingredient) {
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText>{title}</ThemedText>
-      <Button
-        title="X"
-        onPress={() => {handleDelete(index)}}
-      />
+      <ThemedText style={{margin: 4}}>{title}</ThemedText>
+      <Pressable style={styles.deleteBtn} onPress={() => {handleDelete(index)}}>
+        <Feather name="trash-2" size={23} color="black" />
+      </Pressable>
     </ThemedView>
   );
 }
@@ -25,21 +26,20 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     height: 40,
-    width: 100,
+    width: 'auto',
     margin: 4,
     paddingLeft: 5,
-    backgroundColor: 'red',
+    borderRadius: 6,
+    backgroundColor: 'green',
   },
   deleteBtn: {
-    //flexDirection: 'row',
-    //justifyContent: 'center',
-    //alignItems: 'center',
-    position: 'relative',
-    right: 0,
+    marginLeft: 'auto',
+    //position: 'relative',
+    //right: 0,
     //height: 40,
     //width: 25,
-    //backgroundColor: 'yellow'
   }
 });

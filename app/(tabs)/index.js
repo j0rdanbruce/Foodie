@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     top: 50,
     margin: 20,
     height: 300
