@@ -7,12 +7,13 @@ import { ThemedText } from '@/components/ThemedText';
 import { Button, SearchBar } from 'react-native-elements';
 import DeletableContainer from '@/components/DeleatableContainer';
 
-import axios from 'axios';
+import { getRecipes } from '@/apis/Recipes';
 
 
 export default function HomeScreen() {
   const [item, setItem] = useState(undefined);
   const [ingredients, setIngredients] = useState([]);
+  const [recipes, setRecipes] = useState();
 
   function handleButtonPress() {    //adds a ingredient to the ingredients state
     if (item) {
@@ -35,27 +36,10 @@ export default function HomeScreen() {
     //Alert.alert(`${index} was pressed.`)
   }
 
-  const getRecipes = async () => {
-    try {
-      const response = await axios.get('http://localhost:4000/recipes');
-    } catch (error) {
-      console.error(error);
-    }
+  function handleRecipeSearch() {
+    const result = getRecipes(ingredients);
 
-    /*
-    fetch("http://localhost:4000/recipes", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ingredients: ingredients
-      })
-    })
-    .then(response => response.json())
-    .catch(error => console.log(error))
-    */
+    setRecipes(result);
   }
 
   return (
@@ -82,7 +66,7 @@ export default function HomeScreen() {
       </ThemedView>
       <Button
         title='Find Recipes'
-        onPress={getRecipes}
+        onPress={handleRecipeSearch}
       />
     </SafeAreaView>
   );
