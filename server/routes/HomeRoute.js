@@ -16,7 +16,7 @@ exports.homeRoute.get('/recipes', (req, res) => {
         console.log(ingredients);
         recipes = (0, edamamApis_1.getEdamamRecipes)(ingredients);
         if (recipes)
-            return recipes;
+            res.send(recipes);
     }
     else {
         console.log("Ingredients were not received.");

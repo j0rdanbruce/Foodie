@@ -17,7 +17,7 @@ homeRoute.get('/recipes', (req: Request, res: Response) => {
     if (ingredients) {
         console.log(ingredients);
         recipes = getEdamamRecipes(ingredients as string[]);
-        if (recipes) return recipes
+        if (recipes) res.send(recipes)
     } else {
         console.log("Ingredients were not received.");
     }

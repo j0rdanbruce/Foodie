@@ -1,5 +1,5 @@
 /**
- * File for api function calls
+ * File for Edamam api function calls
  */
 
 import axios, { AxiosRequestConfig } from "axios";
@@ -42,7 +42,6 @@ export async function getEdamamRecipes(ingredients: string[]) {
         servingSize: recipe.recipe.yield,
         calories: Math.round(recipe.recipe.totalNutrients.ENERC_KCAL.quantity)
       }
-
       recipesList.push(recipeData);
     }
     console.log(recipesList);

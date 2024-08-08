@@ -13,7 +13,7 @@ import { getRecipes } from '@/apis/Recipes';
 export default function HomeScreen() {
   const [item, setItem] = useState(undefined);
   const [ingredients, setIngredients] = useState([]);
-  const [recipes, setRecipes] = useState();
+  const [recipes, setRecipes] = useState(undefined);
 
   function handleButtonPress() {    //adds a ingredient to the ingredients state
     if (item) {
